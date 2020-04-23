@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import Typed from 'react-typed';
 import BaseLayout from '../components/layouts/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 
 class Index extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.roles = ['Coder', 'React.js Lover', 'Fullstack Developer'];
+  }
 
     render() {
         return (
@@ -11,7 +18,6 @@ class Index extends Component {
               <div className="background-image">
                 <img src="/static/images/background-index.png" />
               </div>
-          
               <Container>
                 <Row>
                   <Col md="6">
@@ -35,10 +41,25 @@ class Index extends Component {
                   <Col md="6" className="hero-welcome-wrapper">
                     <div className="hero-welcome-text">
                       <h1>
-                        Welcome to the portfolio website of Filip Jerga.
+                        Welcome to the portfolio website of Timo Kock.
                         Get informed, collaborate and discover projects I was working on through the years!
                       </h1>
                     </div>
+                    
+                    <Typed
+                      className="self-typed"
+                      loop
+                      typeSpeed={60}
+                      backSpeed={60}
+                      strings={this.roles}
+                      smartBackspace
+                      shuffle={false}
+                      backDelay={1000}
+                      fadeOutDelay={1000}
+                      loopCount={0}
+                      showCursor
+                      cursorChar="|"
+                    />
                     <div className="hero-welcome-bio">
                       <h1>
                         Let's take a look on my work.
@@ -49,7 +70,6 @@ class Index extends Component {
               </Container>
             </div>
           </BaseLayout>
-          
         );
     };
 };
