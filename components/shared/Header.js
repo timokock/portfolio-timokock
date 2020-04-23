@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
 import { Link as NextLink} from '../../routes';
-import '../../styles/main.scss';
 
 class Header extends Component {
     render() {
