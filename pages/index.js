@@ -15,9 +15,6 @@ class Index extends Component {
         return (
             <BaseLayout className="cover">
             <div className="main-section">
-              <div className="background-image">
-                <img src="/static/images/background-index.png" />
-              </div>
               <Container>
                 <Row>
                   <Col md="6">
