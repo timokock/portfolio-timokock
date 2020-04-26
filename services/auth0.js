@@ -14,7 +14,6 @@ class Auth0 {
         });
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
     };
 
@@ -58,25 +57,22 @@ class Auth0 {
         })
     };
 
-    isAuthenticated() {
-        const expiresAt = Cookies.getJSON('expiresAt');
-        return new Date().getTime() < expiresAt;
-    };
-
     verifyToken(token) {
         if(token) {
             const decodedToken = jwt.decode(token);
-            const expiresAt = decodedToken.exp = 1000;
+            const expiresAt = decodedToken.exp * 1000;
 
             return (decodedToken && new Date().getTime() < expiresAt) ? decodedToken : undefined;
         }
+        return undefined;
     };
 
     clientAuth() {
+        debugger;
         const token = Cookies.getJSON('jwt');
         const verifiedtoken = this.verifyToken(token);
 
-        return token;
+        return verifiedtoken;
     };
 
     serverAuth(req) {
@@ -84,8 +80,8 @@ class Auth0 {
             const tokenCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='));
             if(!tokenCookie) { return undefined };
             const token = tokenCookie.split('=')[1];
-            const verifiedToken = this.verifyToken(token);
-            return verifiedToken;
+            const theVerifiedToken = this.verifyToken(token);
+            return theVerifiedToken;
         };
         return undefined;
     };

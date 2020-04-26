@@ -8,7 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
-import auth0 from '../../services/auth0';
+import auth0client from '../../services/auth0';
 
 const BsNavLink = (props) => {
     const { route, title } = props;
@@ -19,15 +19,15 @@ const BsNavLink = (props) => {
 
 const Login = () => {
     return(
-        <span className="nav-link port-navbar-link clickable" onClick={auth0.login}> Login </span>
+        <span className="nav-link port-navbar-link clickable" onClick={auth0client.login}> Login </span>
     );
 };
 
 const Logout = () => {
     return(
-        <span className="nav-link port-navbar-link clickable" onClick={auth0.logout}> Logout </span>
+        <span className="nav-link port-navbar-link clickable" onClick={auth0client.logout}> Logout </span>
     );    
-}
+};
 
 class Header extends Component {
 
@@ -37,18 +37,18 @@ class Header extends Component {
         this.toogle = this.toogle.bind(this);
         this.state = {
             isOpen: false
-        };
-    }
+        }
+    };
 
     toogle() {
         this.setState({
             isOpen: !this.state.isOpen
-        });
-    };
+        })
+    }
 
     render() {
 
-        const { isAuthenticated } = this.props;
+        const { isAuthenticated, user } = this.props;
 
         return (
             <Fragment>
@@ -86,7 +86,7 @@ class Header extends Component {
                     </Collapse>
                 </Navbar>
             </Fragment>
-        );
+        )
     }
 }
 

@@ -12,6 +12,9 @@ class Index extends Component {
   }
 
     render() {
+
+      const { isAuthenticated, user } = this.props.auth;
+
         return (
             <BaseLayout className="cover" {...this.props.auth}>
             <div className="main-section">
@@ -38,8 +41,9 @@ class Index extends Component {
                   <Col md="6" className="hero-welcome-wrapper">
                     <div className="hero-welcome-text">
                       <h1>
-                        Welcome to the portfolio website of Timo Kock.
-                        Get informed, collaborate and discover projects I was working on through the years!
+                      { isAuthenticated && <span>Hi <b>{user.name}</b>, </span> }
+                        welcome to my portfolio website.
+                        Get informed, collaborate and discover my projects!
                       </h1>
                     </div>
                     
