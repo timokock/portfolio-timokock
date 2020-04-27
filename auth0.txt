@@ -1,3 +1,0 @@
-clientID: 65667378580-1opjjsqpfs7ekcrqi096cek2hukm2gub.apps.googleusercontent.com
-
-clientSECRET: cgNeTUHwwjuI6JYnTYAmSrdz
